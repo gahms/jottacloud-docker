@@ -27,5 +27,11 @@ ENV JOTTA_TOKEN=**None** \
 RUN mkdir /jottahome
 ADD entrypoint.sh /jottahome
 
+# removes orphaned packages, i.e. installed packages that used to be installed as an dependency, but aren't any longer.
+RUN apt-get autoremove
+
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # setup container and start service
 ENTRYPOINT ["/jottahome/entrypoint.sh"]
