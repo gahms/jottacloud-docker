@@ -6,7 +6,7 @@ RUN apt-get update \
 
 RUN wget -O - https://repo.jotta.us/public.gpg | apt-key add -
 RUN echo "deb https://repo.jotta.us/debian debian main" | tee /etc/apt/sources.list.d/jotta-cli.list
-RUN apt-get update && apt-get install jotta-cli expect
+RUN apt-get update && apt-get install -y jotta-cli expect
 
 VOLUME ["/config"]
 VOLUME ["/backup"]
