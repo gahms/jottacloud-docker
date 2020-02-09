@@ -2,9 +2,11 @@
 
 /etc/init.d/jottad start
 
-while [[ "$(jotta-cli status)" =~ "ERROR  	jottad event loop has not started.*" ]]; do
-  sleep 1
-done
+# while [[ "$(jotta-cli status)" =~ "ERROR  	jottad event loop has not started.*" ]]; do
+#   sleep 1
+# done
+
+sleep 5
 
 if [[ "$(jotta-cli status)" =~ "ERROR  Not logged in" ]]; then
   echo "First time login"
